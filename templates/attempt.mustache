@@ -1,0 +1,17 @@
+{{!
+    @template mod_speakingfeedback/attempt
+    Escaped transcript and sanitised feedback. Example: {"id": 1, "date": "Today", "statuslabel": "Saved"}
+}}
+<article class="sf-card mb-3" data-attemptid="{{id}}">
+    <div class="d-flex flex-wrap justify-content-between gap-2 mb-2">
+        <h3 class="h5">{{#str}}attempt, speakingfeedback, {{id}}{{/str}}</h3>
+        <span class="text-muted small">{{date}} · {{statuslabel}}</span>
+    </div>
+    {{#studentname}}<p class="fw-bold">{{studentname}}</p>{{/studentname}}
+    {{#audiourl}}<audio controls preload="none" class="w-100" aria-label="{{#str}}recordingplayback, speakingfeedback{{/str}}" src="{{audiourl}}"></audio>{{/audiourl}}
+    {{#error}}<p class="alert alert-warning mt-3">{{error}}</p>{{/error}}
+    {{#transcript}}<details class="mt-3"><summary>{{#str}}transcript, speakingfeedback{{/str}}</summary><p class="sf-transcript mt-2">{{transcript}}</p></details>{{/transcript}}
+    {{#feedback}}<section class="sf-feedback mt-3"><h4 class="h5">{{#str}}feedback, speakingfeedback{{/str}}</h4>{{{feedback}}}</section>{{/feedback}}
+    {{#canretry}}<button class="btn btn-outline-primary mt-3" type="button" data-action="retry" data-id="{{id}}">{{#str}}retry, speakingfeedback{{/str}}</button>{{/canretry}}
+    {{#deleteurl}}<a class="btn btn-outline-danger mt-3" href="{{deleteurl}}" aria-label="{{#str}}deleteattemptlabel, speakingfeedback, {{id}}{{/str}}">{{#str}}deleteattempt, speakingfeedback{{/str}}</a>{{/deleteurl}}
+</article>

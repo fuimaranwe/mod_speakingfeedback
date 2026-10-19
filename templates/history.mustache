@@ -1,0 +1,6 @@
+{{!
+    @template mod_speakingfeedback/history
+    Student history. Example: {"attempts": [], "hasattempts": false}
+}}
+{{#attempts}}{{> mod_speakingfeedback/attempt}}{{/attempts}}
+{{^hasattempts}}<p class="text-muted">{{#str}}noattempts, speakingfeedback{{/str}}</p>{{/hasattempts}}

@@ -1,0 +1,17 @@
+{{!
+    @template mod_speakingfeedback/report
+    Teacher report. Example: {"cmid": 1, "attempts": [], "student": ""}
+}}
+<div class="speakingfeedback">
+    <h2>{{#str}}report, speakingfeedback{{/str}}</h2>
+    <p><a href="{{backurl}}">{{#str}}modulename, speakingfeedback{{/str}}</a></p>
+    {{{groupmenu}}}
+    <form method="get" class="d-flex flex-wrap gap-2 align-items-end mb-4">
+        <input type="hidden" name="id" value="{{cmid}}">
+        <div><label for="sf-student">{{#str}}search{{/str}}</label><input id="sf-student" class="form-control" type="search" name="student" value="{{student}}"></div>
+        <button class="btn btn-primary" type="submit">{{#str}}search{{/str}}</button>
+    </form>
+    {{#attempts}}{{> mod_speakingfeedback/attempt}}{{/attempts}}
+    {{^hasattempts}}<p>{{#str}}noattempts, speakingfeedback{{/str}}</p>{{/hasattempts}}
+    {{{pagination}}}
+</div>

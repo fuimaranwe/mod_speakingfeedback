@@ -1,0 +1,17 @@
+{{!
+    @template mod_speakingfeedback/delete_attempt
+    Teacher deletion confirmation. Example: {"message": "Delete attempt 1?", "deleteurl": "#", "cancelurl": "#", "sesskey": "test"}
+}}
+<div class="speakingfeedback">
+    <section class="sf-card" aria-labelledby="sf-delete-title">
+        <h2 id="sf-delete-title">{{#str}}deleteattempt, speakingfeedback{{/str}}</h2>
+        <p>{{message}}</p>
+        <p>{{#str}}deleteattemptwarning, speakingfeedback{{/str}}</p>
+        <form method="post" action="{{deleteurl}}" class="d-flex flex-wrap gap-2">
+            <input type="hidden" name="sesskey" value="{{sesskey}}">
+            <input type="hidden" name="confirm" value="1">
+            <button class="btn btn-danger" type="submit">{{#str}}deleteattempt, speakingfeedback{{/str}}</button>
+            <a class="btn btn-secondary" href="{{cancelurl}}">{{#str}}cancel{{/str}}</a>
+        </form>
+    </section>
+</div>

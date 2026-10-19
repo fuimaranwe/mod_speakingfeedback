@@ -1,0 +1,47 @@
+.speakingfeedback {
+    max-width: 960px;
+    margin-inline: auto;
+}
+.speakingfeedback .sf-card {
+    background: var(--bs-body-bg, #fff);
+    border: 1px solid var(--bs-border-color, #e2e8f0);
+    border-radius: 1.25rem;
+    padding: clamp(1rem, 3vw, 1.75rem);
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+    overflow-wrap: anywhere;
+}
+.speakingfeedback .sf-recorder {
+    text-align: center;
+}
+.speakingfeedback .sf-clock {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--bs-primary, #0f766e);
+}
+.speakingfeedback .sf-transcript {
+    white-space: pre-wrap;
+}
+.speakingfeedback .sf-recording-indicator {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-inline-end: 0.5rem;
+    border-radius: 50%;
+    background: var(--bs-danger, #dc3545);
+}
+.speakingfeedback .sf-recording-indicator[hidden] {
+    display: none;
+}
+.speakingfeedback .sf-feedback h1,
+.speakingfeedback .sf-feedback h2,
+.speakingfeedback .sf-feedback h3 {
+    font-size: 1.15rem;
+    margin-top: 1.25rem;
+}
+.speakingfeedback audio {
+    max-width: 100%;
+}
+.speakingfeedback summary {
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+{{!
+    @template mod_speakingfeedback/activity
+    Activity recorder and history. Example: {"cmid": 1, "instructions": "Speak about your day", "cansubmit": true}
+}}
+<div class="speakingfeedback" data-region="speakingfeedback" data-cmid="{{cmid}}">
+    {{#reporturl}}<div class="text-end mb-3"><a class="btn btn-outline-primary" href="{{reporturl}}">{{#str}}report, speakingfeedback{{/str}}</a></div>{{/reporturl}}
+    <section class="sf-card mb-4" aria-labelledby="sf-instructions">
+        <h2 id="sf-instructions" class="h4">{{#str}}instructions, speakingfeedback{{/str}}</h2>
+        <div class="sf-instructions">{{{instructions}}}</div>
+        <div class="d-flex flex-wrap gap-3 mt-3 text-muted"><span>{{timing}}</span><span data-region="remaining">{{remaining}}</span></div>
+    </section>
+    {{#keymissing}}<div class="alert alert-warning">{{#str}}keymissing, speakingfeedback{{/str}}</div>{{/keymissing}}
+    {{#limitreached}}<div class="alert alert-info">{{#str}}limitreached, speakingfeedback{{/str}}</div>{{/limitreached}}
+    {{#cansubmit}}
+    <section class="sf-card sf-recorder mb-4" aria-label="{{#str}}recording, speakingfeedback{{/str}}">
+        <p class="text-muted small">{{#str}}disclosure, speakingfeedback{{/str}}</p>
+        <p role="status" aria-live="polite"><span class="sf-recording-indicator" data-region="recordingindicator" aria-hidden="true" hidden></span><span data-region="status">{{#str}}ready, speakingfeedback{{/str}}</span></p>
+        <p class="text-muted mb-0" data-region="timerlabel">{{#str}}timeleft, speakingfeedback{{/str}}</p>
+        <div class="sf-clock" data-region="timer" role="timer" aria-label="{{#str}}timeleft, speakingfeedback{{/str}}">00:00</div>
+        <div data-region="error" class="alert alert-danger" role="alert" hidden></div>
+        <audio data-region="preview" class="w-100 mb-3" controls hidden aria-label="{{#str}}recordingplayback, speakingfeedback{{/str}}"></audio>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <button type="button" class="btn btn-primary" data-action="record" aria-describedby="sf-start-help" {{^canrecord}}disabled{{/canrecord}}>{{startlabel}}</button>
+            <button type="button" class="btn btn-outline-danger" data-action="stop" hidden>{{#str}}stop, speakingfeedback{{/str}}</button>
+            <button type="button" class="btn btn-primary" data-action="submit" hidden>{{#str}}getfeedback, speakingfeedback{{/str}}</button>
+        </div>
+        <p id="sf-start-help" data-region="starthelp" class="text-muted small mt-3 mb-0">{{starthint}}</p>
+    </section>
+    {{/cansubmit}}
+    <div data-region="result"></div>
+    <section class="mt-4" aria-labelledby="sf-history">
+        <h2 id="sf-history" class="h4">{{#str}}history, speakingfeedback{{/str}}</h2>
+        <div data-region="history">
+            {{#attempts}}{{> mod_speakingfeedback/attempt}}{{/attempts}}
+            {{^hasattempts}}<p class="text-muted">{{#str}}noattempts, speakingfeedback{{/str}}</p>{{/hasattempts}}
+        </div>
+        <div data-region="pagination">{{{pagination}}}</div>
+    </section>
+</div>
